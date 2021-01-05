@@ -4,7 +4,7 @@ Lingua::Conjunction - Convert lists into simple linguistic conjunctions
 
 # VERSION
 
-version v2.1.4
+version v2.1.5
 
 # SYNOPSIS
 
@@ -92,6 +92,10 @@ $name_list = conjunction('Jack', 'Jill', 'Spot');
 I have been told that the penultimate comma is not standard for some
 languages, such as Norwegian. Hence the defaults set in the `%languages`.
 
+# VERSION
+
+Version v2.1.5
+
 # SEE ALSO
 
 `Locale::Language`
@@ -100,6 +104,13 @@ The _Perl Cookbook_ in Section 4.2 has a simular subroutine called
 `commify_series`. The difference is that 1. this routine handles
 multiple languages and 2. being a module, you do not have to add
 the subroutine to a script every time you need it.
+
+# AUTHOR
+
+```
+1999-present  Robert Rothenberg C<< <rrwo@cpan.org> >>, Damian Conway C<< <damian@conway.org> >>
+2020- Maintained by Nigel Horne, C<< <njh at bandsman.co.uk> >>
+```
 
 # SOURCE
 
@@ -124,6 +135,7 @@ feature.
 
 - Ade Ishs <adeishs@cpan.org>
 - Mohammad S Anwar <mohammad.anwar@yahoo.com>
+- Nigel Horne <nigel.horne@nasa.gov>
 
 # COPYRIGHT AND LICENSE
 

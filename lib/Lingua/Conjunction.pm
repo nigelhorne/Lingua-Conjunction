@@ -123,6 +123,18 @@ sub conjunction {
 
 __END__
 
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Lingua::Conjunction - Convert lists into simple linguistic conjunctions
+
+=head1 VERSION
+
+version v2.1.5
+
 =head1 SYNOPSIS
 
     use Lingua::Conjunction;
@@ -199,6 +211,10 @@ is there if you want it:
 I have been told that the penultimate comma is not standard for some
 languages, such as Norwegian. Hence the defaults set in the C<%languages>.
 
+=head1 VERSION
+
+Version v2.1.5
+
 =head1 SEE ALSO
 
 C<Locale::Language>
@@ -208,10 +224,60 @@ C<commify_series>. The difference is that 1. this routine handles
 multiple languages and 2. being a module, you do not have to add
 the subroutine to a script every time you need it.
 
-=head1 AUTHOR
+=head1 SOURCE
 
-  1999-present	Robert Rothenberg C<< <rrwo@cpan.org> >>, Damian Conway C<< <damian@conway.org> >>
-  2020- Maintained by Nigel Horne, C<< <njh at bandsman.co.uk> >>
+The development version is on github at L<https://github.com/robrwo/Lingua-Conjunction>
+and may be cloned from L<git://github.com/robrwo/Lingua-Conjunction.git>
 
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+L<https://github.com/robrwo/Lingua-Conjunction/issues>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Robert Rothenberg <rrwo@cpan.org>
+
+=item *
+
+Damian Conway <damian@conway.org>
+
+=back
+
+=head1 CONTRIBUTORS
+
+=for stopwords Ade Ishs Mohammad S Anwar Nigel Horne
+
+=over 4
+
+=item *
+
+Ade Ishs <adeishs@cpan.org>
+
+=item *
+
+Mohammad S Anwar <mohammad.anwar@yahoo.com>
+
+=item *
+
+Nigel Horne C<< <njh at bandsman.co.uk> >>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 1999-2020 by Robert Rothenberg.
+
+This is free software, licensed under:
+
+  The Artistic License 2.0 (GPL Compatible)
 
 =cut
