@@ -13,6 +13,12 @@ use Exporter qw/ import /;
 our @EXPORT    = qw( conjunction );
 our @EXPORT_OK = @EXPORT;
 
+=head1 VERSION
+
+Version v2.1.5
+
+=cut
+
 our $VERSION = 'v2.1.5';
 
 # Language-specific definitions (these may not be correct, and certainly
@@ -201,5 +207,11 @@ The I<Perl Cookbook> in Section 4.2 has a simular subroutine called
 C<commify_series>. The difference is that 1. this routine handles
 multiple languages and 2. being a module, you do not have to add
 the subroutine to a script every time you need it.
+
+=head1 AUTHOR
+
+  1999-present	Robert Rothenberg C<< <rrwo@cpan.org> >>, Damian Conway C<< <damian@conway.org> >>
+  2020- Maintained by Nigel Horne, C<< <njh at bandsman.co.uk> >>
+
 
 =cut
