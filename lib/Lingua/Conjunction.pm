@@ -27,6 +27,8 @@ our $VERSION = 'v2.1.5';
 
 =head1 SYNOPSIS
 
+=encoding UTF-8
+
 # Language-specific definitions (these may not be correct, and certainly
 # they are not complete... E-mail corrections and additions to the author
 # and an updated version will be released.)
@@ -60,7 +62,7 @@ my %language = (
     'sw' => { sep => ',', alt => ";", pen => 1, con => 'na',  dis => 'au' },
 );
 
-# Conjunction types. Someday we'll add either..or, neither..nor
+# Conjunction types. TODO: Someday we'll add either..or, neither..nor
 my %types = (
     'and' => 'con',
     'or'  => 'dis'
@@ -69,121 +71,9 @@ my %types = (
 my %punct     = %{ $language{_get_language()} };
 my $list_type = $types{'and'};
 
-# Lingua::Conjunction->separator( SCALAR ) - sets the separator
-sub separator {
-    $punct{sep} = $_[1];
-}
+=head1 SUBROUTINES/METHODS
 
-# Lingua::Conjunction->separator_phrase( SCALAR ) - sets the alternate
-#   (phrase) separator
-sub separator_phrase {
-    $punct{alt} = $_[1];
-}
-
-# Lingua::Conjunction->penultimate( BOOL ) - enables/disables punultimate
-#  separator
-sub penultimate {
-    $punct{pen} = $_[1];
-}
-
-# Lingua::Conjunction->connector( SCALAR ) - sets a specific connector
-sub connector {
-    $punct{$list_type} = $_[1];
-}
-
-# Lingua::Conjunction->connector_type ( "and" | "or" ) - use "and" or "or"
-#  (with appropriate translation for language)
-sub connector_type {
-    croak "Undefined connector type \`$_[1]\'", unless ( $types{ $_[1] } );
-    $list_type = $types{ $_[1] };
-}
-
-# Lingua::Conjunction->lang( LANG_CODE ) - sets the language to use
-sub lang {
-    my $language = $_[1] || _get_language();
-    croak "Undefined language \`$language\'",
-      unless ( defined( $language{$language} ) );
-    %punct = %{ $language{$language} };
-}
-
-sub conjunction {
-    return $_[0] if @_ < 2;
-    return join " $punct{$list_type} ", @_ if @_ == 2;
-
-    if ( $punct{pen} ) {
-        return join "$punct{sep} ", @_[ 0 .. $#_ - 1 ],
-          "$punct{$list_type} $_[-1]",
-          unless grep /$punct{sep}/, @_;
-        return join "$punct{alt} ", @_[ 0 .. $#_ - 1 ],
-          "$punct{$list_type} $_[-1]";
-    }
-    else {
-        return join "$punct{sep} ", @_[ 0 .. $#_ - 2 ],
-          "$_[-2] $punct{$list_type} $_[-1]",
-          unless grep /$punct{sep}/, @_;
-        return join "$punct{alt} ", @_[ 0 .. $#_ - 2 ],
-          "$_[-2] $punct{$list_type} $_[-1]";
-    }
-
-}
-
-# https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html
-# https://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html
-sub _get_language
-{
-	if($ENV{'LANGUAGE'}) {
-		foreach my $l(split/:/, $ENV{'LANGUAGE'}) {
-			if($language{$l}) {
-				return $l;
-			}
-		}
-	}
-	foreach my $variable('LC_ALL', 'LC_MESSAGES', 'LANG') {
-		my $val = $ENV{$variable};
-		next unless(defined($val));
-
-		$val = substr($val, 0, 1);
-		if($language{$val}) {
-			return $val;
-		}
-	}
-	return 'en';
-}
-
-1;
-
-__END__
-
-=pod
-
-=encoding UTF-8
-
-
-=head1 SYNOPSIS
-
-    use Lingua::Conjunction;
-
-    # emits "Jack"
-    $name_list = conjunction('Jack');
-
-    # emits "Jack and Jill"
-    $name_list = conjunction('Jack', 'Jill');
-
-    # emits "Jack, Jill, and Spot"
-    $name_list = conjunction('Jack', 'Jill', 'Spot');
-
-    # emits "Jack, a boy; Jill, a girl; and Spot, a dog"
-    $name_list = conjunction('Jack, a boy', 'Jill, a girl', 'Spot, a dog');
-
-    # emits "Jacques, un garcon; Jeanne, une fille; et Spot, un chien"
-    Lingua::Conjunction->lang('fr');
-    $name_list = conjunction(
-        'Jacques, un garcon',
-        'Jeanne, une fille',
-        'Spot, un chien'
-    );
-
-=head1 DESCRIPTION
+=head2 conjunction
 
 Lingua::Conjunction exports a single subroutine, C<conjunction>, that
 converts a list into a properly punctuated text string.
@@ -219,45 +109,147 @@ You can also set connectives individually:
     # emits "Jack... Jill... or Spot"
     $name_list = conjunction('Jack', 'Jill', 'Spot');
 
+=cut
+
+sub conjunction {
+    return $_[0] if @_ < 2;
+    return join " $punct{$list_type} ", @_ if @_ == 2;
+
+    if ( $punct{pen} ) {
+        return join "$punct{sep} ", @_[ 0 .. $#_ - 1 ],
+          "$punct{$list_type} $_[-1]",
+          unless grep /$punct{sep}/, @_;
+        return join "$punct{alt} ", @_[ 0 .. $#_ - 1 ],
+          "$punct{$list_type} $_[-1]";
+    }
+    else {
+        return join "$punct{sep} ", @_[ 0 .. $#_ - 2 ],
+          "$_[-2] $punct{$list_type} $_[-1]",
+          unless grep /$punct{sep}/, @_;
+        return join "$punct{alt} ", @_[ 0 .. $#_ - 2 ],
+          "$_[-2] $punct{$list_type} $_[-1]";
+    }
+
+}
+
+=head2 separator
+
+Sets the separator, usually ',' or ';'.
+
+    Lingua::Conjunction->separator(',');
+
+=cut
+
+sub separator {
+    $punct{sep} = $_[1];
+}
+
+=head2 separator_phrase
+
+Sets the alternate (phrase) separator.
+
+    Lingua::Conjunction->separator_phrase(';');
+
 The C<separator_phrase> is used whenever the separator already appears in
 an item of the list. For example:
 
     # emits "Doe, a deer; Ray; and Me"
     $name_list = conjunction('Doe, a deer', 'Ray', 'Me');
 
+=cut
+
+sub separator_phrase {
+    $punct{alt} = $_[1];
+}
+
+=head2 penultimate
+
+Enables/disables punultimate separator.
+
 You may use the C<penultimate> routine to diable the separator after the
-next to last item. Generally this is bad English practice but the option
-is there if you want it:
+next to last item.
+In English, The Oxford Comma is a highly debated issue.
 
     # emits "Jack, Jill and Spot"
     Lingua::Conjunction->penultimate(0);
     $name_list = conjunction('Jack', 'Jill', 'Spot');
 
-I have been told that the penultimate comma is not standard for some
-languages, such as Norwegian. Hence the defaults set in the C<%languages>.
+The original author was told that the penultimate comma is not standard for some
+languages, such as Norwegian.
+Hence the defaults set in the C<%languages>.
 
-=head1 SEE ALSO
+    Lingua::Conjunction->penultimate(0);
 
-C<Locale::Language>
+=cut
 
-The I<Perl Cookbook> in Section 4.2 has a simular subroutine called
-C<commify_series>. The difference is that 1. this routine handles
-multiple languages and 2. being a module, you do not have to add
-the subroutine to a script every time you need it.
+sub penultimate {
+    $punct{pen} = $_[1];
+}
 
-=head1 SOURCE
+=head2 connector_type
 
-The development version is on github at L<https://github.com/robrwo/Lingua-Conjunction>
-and may be cloned from L<git://github.com/robrwo/Lingua-Conjunction.git>
+Use "and" or "or", with appropriate translation for the current language
 
-=head1 BUGS
+    Lingua::Conjunction->connector_type('and');
 
-Please report any bugs or feature requests on the bugtracker website
-L<https://github.com/robrwo/Lingua-Conjunction/issues>
+=cut
 
-When submitting a bug or request, please include a test-file or a
-patch to an existing test-file that illustrates the bug or desired
-feature.
+sub connector_type {
+    croak "Undefined connector type \`$_[1]\'", unless ( $types{ $_[1] } );
+    $list_type = $types{ $_[1] };
+}
+
+=head2 connector
+
+Sets the for the current connector_type.
+
+    Lingua::Conjunction->connector(SCALAR)
+
+=cut
+
+sub connector {
+    $punct{$list_type} = $_[1];
+}
+
+=head2 lang
+
+Sets the language to use.
+If no arguments are given,
+it tries its best to guess.
+
+    Lingua::Conjunction->lang('de');	# Changes the language to German
+
+=cut
+
+sub lang {
+    my $language = $_[1] || _get_language();
+    croak "Undefined language \`$language\'",
+      unless ( defined( $language{$language} ) );
+    %punct = %{ $language{$language} };
+}
+
+# https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html
+# https://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html
+sub _get_language
+{
+	if($ENV{'LANGUAGE'}) {
+		foreach my $l(split/:/, $ENV{'LANGUAGE'}) {
+			if($language{$l}) {
+				return $l;
+			}
+		}
+	}
+	foreach my $variable('LC_ALL', 'LC_MESSAGES', 'LANG') {
+		my $val = $ENV{$variable};
+		next unless(defined($val));
+
+		$val = substr($val, 0, 1);
+		if($language{$val}) {
+			return $val;
+		}
+	}
+	return 'en';
+}
 
 =head1 AUTHORS
 
@@ -293,6 +285,65 @@ Nigel Horne C<< <njh at bandsman.co.uk> >>
 
 =back
 
+=head1 SEE ALSO
+
+C<Locale::Language>
+
+The I<Perl Cookbook> in Section 4.2 has a simular subroutine called
+C<commify_series>. The difference is that 1. this routine handles
+multiple languages and 2. being a module, you do not have to add
+the subroutine to a script every time you need it.
+
+=head1 SOURCE
+
+The development version is on github at L<https://github.com/nigelhorne/Lingua-Conjunction>
+and may be cloned from L<git://github.com/nigelhorne/Lingua-Conjunction.git>
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Lingua::Conjunction
+
+You can also look for information at:
+
+=over 4
+
+=item * MetaCPAN
+
+L<https://metacpan.org/release/Lingua-Conjunction>
+
+=item * RT: CPAN's request tracker
+
+L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Lingua-Conjunction>
+
+=item * CPANTS
+
+L<http://cpants.cpanauthors.org/dist/Lingua-Conjunction>
+
+=item * CPAN Testers' Matrix
+
+L<http://matrix.cpantesters.org/?dist=Lingua-Conjunction>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Lingua-Conjunction>
+
+=item * CPAN Testers Dependencies
+
+L<http://deps.cpantesters.org/?module=Lingua::Conjunction>
+
+=back
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+L<https://github.com/nigelhorne/Lingua-Conjunction/issues>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
 =head1 COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 1999-2020 by Robert Rothenberg.
@@ -302,3 +353,5 @@ This is free software, licensed under:
   The Artistic License 2.0 (GPL Compatible)
 
 =cut
+
+1;

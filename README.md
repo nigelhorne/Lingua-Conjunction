@@ -4,35 +4,27 @@ Lingua::Conjunction - Convert lists into simple linguistic conjunctions
 
 # VERSION
 
-version v2.1.5
+Version v2.1.5
 
 # SYNOPSIS
 
-```perl
-use Lingua::Conjunction;
+\# Language-specific definitions (these may not be correct, and certainly
+\# they are not complete... E-mail corrections and additions to the author
+\# and an updated version will be released.)
 
-# emits "Jack"
-$name_list = conjunction('Jack');
+\# Format of %language is as follows:
+\# Two-letter ISO language codes... see Locale::Language.pm from CPAN for
+\#   more details.
+\# sep = item  separator (usually a comma)
+\# alt = alternate ("phrase") separator
+\# pen = 1 = use penultimate separator/0 = don't use penultimate
+\#   (ie, "Jack, Jill and Spot" vs. "Jack, Jill, and Spot")
+\# con = conjunction ("and")
+\# dis = disjunction ("or"), well, grammatically still a "conjunction"...
 
-# emits "Jack and Jill"
-$name_list = conjunction('Jack', 'Jill');
+# SUBROUTINES/METHODS
 
-# emits "Jack, Jill, and Spot"
-$name_list = conjunction('Jack', 'Jill', 'Spot');
-
-# emits "Jack, a boy; Jill, a girl; and Spot, a dog"
-$name_list = conjunction('Jack, a boy', 'Jill, a girl', 'Spot, a dog');
-
-# emits "Jacques, un garcon; Jeanne, une fille; et Spot, un chien"
-Lingua::Conjunction->lang('fr');
-$name_list = conjunction(
-    'Jacques, un garcon',
-    'Jeanne, une fille',
-    'Spot, un chien'
-);
-```
-
-# DESCRIPTION
+## conjunction
 
 Lingua::Conjunction exports a single subroutine, `conjunction`, that
 converts a list into a properly punctuated text string.
@@ -40,10 +32,9 @@ converts a list into a properly punctuated text string.
 You can cause `conjunction` to use the connectives of other languages, by
 calling the appropriate subroutine:
 
-```perl
-Lingua::Conjunction->lang('en');   # use 'and' (default)
-Lingua::Conjunction->lang('es');   # use 'y'
-```
+    Lingua::Conjunction->lang('en');   # use 'and'
+    Lingua::Conjunction->lang('es');   # use 'y'
+    Lingua::Conjunction->lang();        # Tries to determine your language, otherwise falls back to 'en'
 
 Supported languages in this version are
 Afrikaans,
@@ -62,69 +53,68 @@ and Swahili.
 
 You can also set connectives individually:
 
-```
-Lingua::Conjunction->separator("...");
-Lingua::Conjunction->separator_phrase("--");
-Lingua::Conjunction->connector_type("or");
+    Lingua::Conjunction->separator("...");
+    Lingua::Conjunction->separator_phrase("--");
+    Lingua::Conjunction->connector_type("or");
 
-# emits "Jack... Jill... or Spot"
-$name_list = conjunction('Jack', 'Jill', 'Spot');
-```
+    # emits "Jack... Jill... or Spot"
+    $name_list = conjunction('Jack', 'Jill', 'Spot');
+
+## separator
+
+Sets the separator, usually ',' or ';'.
+
+    Lingua::Conjunction->separator(',');
+
+## separator\_phrase
+
+Sets the alternate (phrase) separator.
+
+    Lingua::Conjunction->separator_phrase(';');
 
 The `separator_phrase` is used whenever the separator already appears in
 an item of the list. For example:
 
-```
-# emits "Doe, a deer; Ray; and Me"
-$name_list = conjunction('Doe, a deer', 'Ray', 'Me');
-```
+    # emits "Doe, a deer; Ray; and Me"
+    $name_list = conjunction('Doe, a deer', 'Ray', 'Me');
+
+## penultimate
+
+Enables/disables punultimate separator.
 
 You may use the `penultimate` routine to diable the separator after the
-next to last item. Generally this is bad English practice but the option
-is there if you want it:
+next to last item.
+In English, The Oxford Comma is a highly debated issue.
 
-```
-# emits "Jack, Jill and Spot"
-Lingua::Conjunction->penultimate(0);
-$name_list = conjunction('Jack', 'Jill', 'Spot');
-```
+    # emits "Jack, Jill and Spot"
+    Lingua::Conjunction->penultimate(0);
+    $name_list = conjunction('Jack', 'Jill', 'Spot');
 
-I have been told that the penultimate comma is not standard for some
-languages, such as Norwegian. Hence the defaults set in the `%languages`.
+The original author was told that the penultimate comma is not standard for some
+languages, such as Norwegian.
+Hence the defaults set in the `%languages`.
 
-# VERSION
+    Lingua::Conjunction->penultimate(0);
 
-Version v2.1.5
+## connector\_type
 
-# SEE ALSO
+Use "and" or "or", with appropriate translation for the current language
 
-`Locale::Language`
+    Lingua::Conjunction->connector_type('and');
 
-The _Perl Cookbook_ in Section 4.2 has a simular subroutine called
-`commify_series`. The difference is that 1. this routine handles
-multiple languages and 2. being a module, you do not have to add
-the subroutine to a script every time you need it.
+## connector
 
-# AUTHOR
+Sets the for the current connector\_type.
 
-```
-1999-present  Robert Rothenberg C<< <rrwo@cpan.org> >>, Damian Conway C<< <damian@conway.org> >>
-2020- Maintained by Nigel Horne, C<< <njh at bandsman.co.uk> >>
-```
+    Lingua::Conjunction->connector(SCALAR)
 
-# SOURCE
+## lang
 
-The development version is on github at [https://github.com/robrwo/Lingua-Conjunction](https://github.com/robrwo/Lingua-Conjunction)
-and may be cloned from [git://github.com/robrwo/Lingua-Conjunction.git](git://github.com/robrwo/Lingua-Conjunction.git)
+Sets the language to use.
+If no arguments are given,
+it tries its best to guess.
 
-# BUGS
-
-Please report any bugs or feature requests on the bugtracker website
-[https://github.com/robrwo/Lingua-Conjunction/issues](https://github.com/robrwo/Lingua-Conjunction/issues)
-
-When submitting a bug or request, please include a test-file or a
-patch to an existing test-file that illustrates the bug or desired
-feature.
+    Lingua::Conjunction->lang('de');    # Changes the language to German
 
 # AUTHORS
 
@@ -135,7 +125,62 @@ feature.
 
 - Ade Ishs <adeishs@cpan.org>
 - Mohammad S Anwar <mohammad.anwar@yahoo.com>
-- Nigel Horne <nigel.horne@nasa.gov>
+- Nigel Horne `<njh at bandsman.co.uk>`
+
+# SEE ALSO
+
+`Locale::Language`
+
+The _Perl Cookbook_ in Section 4.2 has a simular subroutine called
+`commify_series`. The difference is that 1. this routine handles
+multiple languages and 2. being a module, you do not have to add
+the subroutine to a script every time you need it.
+
+# SOURCE
+
+The development version is on github at [https://github.com/nigelhorne/Lingua-Conjunction](https://github.com/nigelhorne/Lingua-Conjunction)
+and may be cloned from [git://github.com/nigelhorne/Lingua-Conjunction.git](git://github.com/nigelhorne/Lingua-Conjunction.git)
+
+# SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Lingua::Conjunction
+
+You can also look for information at:
+
+- MetaCPAN
+
+    [https://metacpan.org/release/Lingua-Conjunction](https://metacpan.org/release/Lingua-Conjunction)
+
+- RT: CPAN's request tracker
+
+    [https://rt.cpan.org/NoAuth/Bugs.html?Dist=Lingua-Conjunction](https://rt.cpan.org/NoAuth/Bugs.html?Dist=Lingua-Conjunction)
+
+- CPANTS
+
+    [http://cpants.cpanauthors.org/dist/Lingua-Conjunction](http://cpants.cpanauthors.org/dist/Lingua-Conjunction)
+
+- CPAN Testers' Matrix
+
+    [http://matrix.cpantesters.org/?dist=Lingua-Conjunction](http://matrix.cpantesters.org/?dist=Lingua-Conjunction)
+
+- CPAN Ratings
+
+    [http://cpanratings.perl.org/d/Lingua-Conjunction](http://cpanratings.perl.org/d/Lingua-Conjunction)
+
+- CPAN Testers Dependencies
+
+    [http://deps.cpantesters.org/?module=Lingua::Conjunction](http://deps.cpantesters.org/?module=Lingua::Conjunction)
+
+# BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+[https://github.com/nigelhorne/Lingua-Conjunction/issues](https://github.com/nigelhorne/Lingua-Conjunction/issues)
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 # COPYRIGHT AND LICENSE
 
@@ -143,6 +188,4 @@ This software is Copyright (c) 1999-2020 by Robert Rothenberg.
 
 This is free software, licensed under:
 
-```
-The Artistic License 2.0 (GPL Compatible)
-```
+    The Artistic License 2.0 (GPL Compatible)

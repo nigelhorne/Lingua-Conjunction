@@ -9,6 +9,7 @@ META.json
 README.md
 t/00-load.t
 t/basic.t
+t/coverage.t
 t/critic.t
 t/eof.t
 t/eol.t
