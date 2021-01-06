@@ -1,4 +1,4 @@
-#!perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
@@ -6,6 +6,8 @@ use warnings;
 use Test::More;
 
 use_ok('Lingua::Conjunction');
+
+$ENV{'LANGUAGE'} = 'en';
 
 ok( "A" eq conjunction( qw( A ) ) );
 ok( "A and C" eq conjunction( qw( A C ) ) );

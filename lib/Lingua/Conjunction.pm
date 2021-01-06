@@ -13,6 +13,10 @@ use Exporter qw/ import /;
 our @EXPORT    = qw( conjunction );
 our @EXPORT_OK = @EXPORT;
 
+=head1 NAME
+
+Lingua::Conjunction - Convert lists into simple linguistic conjunctions
+
 =head1 VERSION
 
 Version v2.1.5
@@ -20,6 +24,8 @@ Version v2.1.5
 =cut
 
 our $VERSION = 'v2.1.5';
+
+=head1 SYNOPSIS
 
 # Language-specific definitions (these may not be correct, and certainly
 # they are not complete... E-mail corrections and additions to the author
@@ -34,6 +40,8 @@ our $VERSION = 'v2.1.5';
 #   (ie, "Jack, Jill and Spot" vs. "Jack, Jill, and Spot")
 # con = conjunction ("and")
 # dis = disjunction ("or"), well, grammatically still a "conjunction"...
+
+=cut
 
 my %language = (
     'af' => { sep => ',', alt => ";", pen => 1, con => 'en',  dis => 'of' },
@@ -92,7 +100,7 @@ sub connector_type {
 
 # Lingua::Conjunction->lang( LANG_CODE ) - sets the language to use
 sub lang {
-    my $language = $_[1] || 'en';
+    my $language = $_[1] || _get_language();
     croak "Undefined language \`$language\'",
       unless ( defined( $language{$language} ) );
     %punct = %{ $language{$language} };
@@ -119,6 +127,29 @@ sub conjunction {
 
 }
 
+# https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html
+# https://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html
+sub get_language
+{
+	if($ENV{'LANGUAGE'}) {
+		foreach my $l(split/:/, $ENV{'LANGUAGE'}) {
+			if($language{$l}) {
+				return $l;
+			}
+		}
+	}
+	foreach my $variable('LC_ALL', 'LC_MESSAGES', 'LANG') {
+		my $val = $ENV{$variable};
+		next unless(defined($val));
+
+		$val = substr($val, 0, 1);
+		if($language{$val}) {
+			return $val;
+		}
+	}
+	return 'en';
+}
+
 1;
 
 __END__
@@ -127,9 +158,6 @@ __END__
 
 =encoding UTF-8
 
-=head1 NAME
-
-Lingua::Conjunction - Convert lists into simple linguistic conjunctions
 
 =head1 VERSION
 
@@ -167,8 +195,9 @@ converts a list into a properly punctuated text string.
 You can cause C<conjunction> to use the connectives of other languages, by
 calling the appropriate subroutine:
 
-    Lingua::Conjunction->lang('en');   # use 'and' (default)
+    Lingua::Conjunction->lang('en');   # use 'and'
     Lingua::Conjunction->lang('es');   # use 'y'
+    Lingua::Conjunction->lang();	# Tries to determine your language, otherwise falls back to 'en'
 
 Supported languages in this version are
 Afrikaans,
