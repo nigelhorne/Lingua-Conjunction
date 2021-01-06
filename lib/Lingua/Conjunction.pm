@@ -242,7 +242,7 @@ sub _get_language
 		my $val = $ENV{$variable};
 		next unless(defined($val));
 
-		$val = substr($val, 0, 1);
+		$val = substr($val, 0, 2);
 		if($language{$val}) {
 			return $val;
 		}
