@@ -18,7 +18,8 @@ WriteMakefile(
 	TEST_REQUIRES => {
 		'File::Spec' => 0,
 		'Module::Metadata' => 0,
-		'Test::More' => 0
+		'Test::More' => 0,
+		'Test::Most' => 0
 	}, PREREQ_PM => {
 		'Carp' => 0,
 		'Exporter' => 0,

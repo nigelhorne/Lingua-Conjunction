@@ -211,10 +211,6 @@ is there if you want it:
 I have been told that the penultimate comma is not standard for some
 languages, such as Norwegian. Hence the defaults set in the C<%languages>.
 
-=head1 VERSION
-
-Version v2.1.5
-
 =head1 SEE ALSO
 
 C<Locale::Language>
