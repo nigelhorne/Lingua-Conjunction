@@ -1,20 +1,67 @@
-.*~$
-.*\.(bak|old)$
-\.git/.*
-\.gitignore
 
-^Makefile$
+#!start included /usr/local/perls/perl-5.18.1/lib/5.18.1/ExtUtils/MANIFEST.SKIP
+# Avoid version control files.
+\bRCS\b
+\bCVS\b
+\bSCCS\b
+,v$
+\B\.svn\b
+\B\.git\b
+\B\.github\b
+\B\.gitignore\b
+\b_darcs\b
+\B\.cvsignore$
 
-^blib/
-^pm_to_blib$
+# Avoid VMS specific MakeMaker generated files
+\bDescrip.MMS$
+\bDESCRIP.MMS$
+\bdescrip.mms$
 
-Lingua-Conjunction-.*/
-Lingua-Conjunction-.*\.tar\.gz
+# Avoid Makemaker generated and utility files.
+\bMANIFEST\.bak
+\bMakefile$
+\bblib/
+\bMakeMaker-\d
+\bpm_to_blib\.ts$
+\bpm_to_blib$
+\bblibdirs\.ts$         # 6.18 through 6.25 generated this
 
-^MYMETA\.*
+# Avoid Module::Build generated and utility files.
+\bBuild$
+\b_build/
+\bBuild.bat$
+\bBuild.COM$
+\bBUILD.COM$
+\bbuild.com$
 
-# QA tests not needed for distribution
+# Avoid temp and backup files.
+~$
+\.old$
+\#$
+\b\.#
+\.bak$
+\.tmp$
+\.#
+\.rej$
+\.yml$
+\.swp$
 
-# Travis-CI
+# Avoid OS-specific files/dirs
+# Mac OSX metadata
+\B\.DS_Store
+# Mac OSX SMB mount metadata files
+\B\._
 
-\.travis\.yml$
+# Avoid Devel::Cover and Devel::CoverX::Covered files.
+\bcover_db\b
+\bcovered\b
+
+# Avoid MYMETA files
+^MYMETA\.
+#!end included /usr/local/perls/perl-5.18.1/lib/5.18.1/ExtUtils/MANIFEST.SKIP
+
+\.travis\.yml
+\.appveyor\.yml
+\.releaserc
+\.lwpcookies
+Lingua-.*
