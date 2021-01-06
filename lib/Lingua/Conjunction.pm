@@ -66,7 +66,7 @@ my %types = (
     'or'  => 'dis'
 );
 
-my %punct     = %{ $language{en} };
+my %punct     = %{ $language{_get_language()} };
 my $list_type = $types{'and'};
 
 # Lingua::Conjunction->separator( SCALAR ) - sets the separator
@@ -129,7 +129,7 @@ sub conjunction {
 
 # https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html
 # https://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html
-sub get_language
+sub _get_language
 {
 	if($ENV{'LANGUAGE'}) {
 		foreach my $l(split/:/, $ENV{'LANGUAGE'}) {
@@ -158,10 +158,6 @@ __END__
 
 =encoding UTF-8
 
-
-=head1 VERSION
-
-version v2.1.5
 
 =head1 SYNOPSIS
 

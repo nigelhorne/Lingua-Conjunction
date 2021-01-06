@@ -5,13 +5,16 @@ LICENSE
 Makefile.PL
 MANIFEST
 MANIFEST.SKIP
+META.json
 README.md
+t/00-load.t
 t/basic.t
 t/critic.t
 t/eof.t
 t/eol.t
 t/fixme.t
 t/kwalitee.t
+t/lang.t
 t/links.t
 t/manifest.t
 t/minimum.t
