@@ -8,19 +8,9 @@ Version v2.1.5
 
 # SYNOPSIS
 
-\# Language-specific definitions (these may not be correct, and certainly
-\# they are not complete... E-mail corrections and additions to the author
-\# and an updated version will be released.)
-
-\# Format of %language is as follows:
-\# Two-letter ISO language codes... see Locale::Language.pm from CPAN for
-\#   more details.
-\# sep = item  separator (usually a comma)
-\# alt = alternate ("phrase") separator
-\# pen = 1 = use penultimate separator/0 = don't use penultimate
-\#   (ie, "Jack, Jill and Spot" vs. "Jack, Jill, and Spot")
-\# con = conjunction ("and")
-\# dis = disjunction ("or"), well, grammatically still a "conjunction"...
+Language-specific definitions (these may not be correct, and certainly
+they are not complete... E-mail corrections and additions to the author
+and an updated version will be released.)
 
 # SUBROUTINES/METHODS
 
@@ -121,6 +111,10 @@ it tries its best to guess.
 - Robert Rothenberg <rrwo@cpan.org>
 - Damian Conway <damian@conway.org>
 
+# MAINTAINER
+
+    2021-present        Maintained by Nigel Horne, C<< <njh at bandsman.co.uk> >>
+
 # CONTRIBUTORS
 
 - Ade Ishs <adeishs@cpan.org>
@@ -132,9 +126,9 @@ it tries its best to guess.
 `Locale::Language`
 
 The _Perl Cookbook_ in Section 4.2 has a simular subroutine called
-`commify_series`. The difference is that 1. this routine handles
-multiple languages and 2. being a module, you do not have to add
-the subroutine to a script every time you need it.
+`commify_series`. The differences are that
+1\. this routine handles multiple languages and
+2\. being a module, you do not have to add the subroutine to a script every time you need it.
 
 # SOURCE
 

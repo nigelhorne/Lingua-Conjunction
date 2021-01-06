@@ -29,21 +29,20 @@ our $VERSION = 'v2.1.5';
 
 =encoding UTF-8
 
-# Language-specific definitions (these may not be correct, and certainly
-# they are not complete... E-mail corrections and additions to the author
-# and an updated version will be released.)
+Language-specific definitions (these may not be correct, and certainly
+they are not complete... E-mail corrections and additions to the author
+and an updated version will be released.)
+
+=cut
 
 # Format of %language is as follows:
-# Two-letter ISO language codes... see Locale::Language.pm from CPAN for
-#   more details.
+# Two-letter ISO language codes... see L<Locale::Language> from CPAN for more details.
 # sep = item  separator (usually a comma)
 # alt = alternate ("phrase") separator
 # pen = 1 = use penultimate separator/0 = don't use penultimate
-#   (ie, "Jack, Jill and Spot" vs. "Jack, Jill, and Spot")
+#	(ie, "Jack, Jill and Spot" vs. "Jack, Jill, and Spot")
 # con = conjunction ("and")
 # dis = disjunction ("or"), well, grammatically still a "conjunction"...
-
-=cut
 
 my %language = (
     'af' => { sep => ',', alt => ";", pen => 1, con => 'en',  dis => 'of' },
@@ -265,6 +264,10 @@ Damian Conway <damian@conway.org>
 
 =back
 
+=head1 MAINTAINER
+
+    2021-present	Maintained by Nigel Horne, C<< <njh at bandsman.co.uk> >>
+
 =head1 CONTRIBUTORS
 
 =for stopwords Ade Ishs Mohammad S Anwar Nigel Horne
@@ -290,9 +293,9 @@ Nigel Horne C<< <njh at bandsman.co.uk> >>
 C<Locale::Language>
 
 The I<Perl Cookbook> in Section 4.2 has a simular subroutine called
-C<commify_series>. The difference is that 1. this routine handles
-multiple languages and 2. being a module, you do not have to add
-the subroutine to a script every time you need it.
+C<commify_series>. The differences are that
+1. this routine handles multiple languages and
+2. being a module, you do not have to add the subroutine to a script every time you need it.
 
 =head1 SOURCE
 
