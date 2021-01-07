@@ -345,7 +345,7 @@ L<http://deps.cpantesters.org/?module=Lingua::Conjunction>
 =head1 BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-L<https://github.com/nigelhorne/Lingua-Conjunction/issues>
+L<https://rt.cpan.org/Dist/Display.html?Queue=Lingua-Conjunction>
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
