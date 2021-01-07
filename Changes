@@ -3,6 +3,7 @@ Revision history for Perl extension Lingua::Conjunction.
 2.3
 	Fix RT#134010
 	Fix RT#134011
+	Included idea from List::ToHumanString to not incude space and undef in inputs
 
 v2.2	Wed Jan  6 09:42:17 EST 2021
 	New Maintainer, thanks to RRWO and DAMIAN for the software
