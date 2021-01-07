@@ -6,6 +6,7 @@ use Test::Most tests => 8;
 
 use_ok('Lingua::Conjunction');
 
+delete $ENV{'LC_ALL'};
 $ENV{'LANGUAGE'} = 'en';
 
 ok( 'A' eq conjunction( qw( A ) ) );
