@@ -4,10 +4,10 @@ use strict;
 use warnings;
 use Test::Most tests => 9;
 
-use_ok('Lingua::Conjunction');
-
 delete $ENV{'LC_ALL'};
 $ENV{'LANGUAGE'} = 'en';
+
+use_ok('Lingua::Conjunction');
 
 ok( 'A' eq conjunction( qw( A ) ) );
 ok( 'A and C' eq conjunction( qw( A C ) ) );
