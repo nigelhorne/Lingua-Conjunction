@@ -27,11 +27,10 @@ our $VERSION = '2.2';
 
 =head1 SYNOPSIS
 
-=encoding UTF-8
-
-Language-specific definitions (these may not be correct, and certainly
-they are not complete... E-mail corrections and additions to the author
-and an updated version will be released.)
+Language-specific definitions.
+These may not be correct, and certainly they are not complete.
+E-mail corrections and additions to C<< <njh at bandsman.co.uk> >>,
+and an updated version will be released.
 
 =cut
 
@@ -45,20 +44,20 @@ and an updated version will be released.)
 # dis = disjunction ("or"), well, grammatically still a "conjunction"...
 
 my %language = (
-    'af' => { sep => ',', alt => ";", pen => 1, con => 'en',  dis => 'of' },
-    'da' => { sep => ',', alt => ";", pen => 1, con => 'og',  dis => 'eller' },
-    'de' => { sep => ',', alt => ";", pen => 1, con => 'und', dis => 'oder' },
-    'en' => { sep => ',', alt => ";", pen => 1, con => 'and', dis => 'or' },
-    'es' => { sep => ',', alt => ";", pen => 1, con => 'y',   dis => 'o' },
-    'fi' => { sep => ',', alt => ";", pen => 1, con => 'ja',  dis => 'tai' },
-    'fr' => { sep => ',', alt => ";", pen => 0, con => 'et',  dis => 'ou' },
-    'id' => { sep => ',', alt => ";", pen => 1, con => 'dan', dis => 'atau' },
-    'it' => { sep => ',', alt => ";", pen => 1, con => 'e',   dis => 'o' },
-    'la' => { sep => ',', alt => ";", pen => 1, con => 'et',  dis => 'vel' },
-    'nl' => { sep => ',', alt => ';', pen => 1, con => 'en',  dis => 'of' },
-    'no' => { sep => ',', alt => ";", pen => 0, con => 'og',  dis => 'eller' },
-    'pt' => { sep => ',', alt => ";", pen => 1, con => 'e',   dis => 'ou' },
-    'sw' => { sep => ',', alt => ";", pen => 1, con => 'na',  dis => 'au' },
+	'af' => { sep => ',', alt => ';', pen => 1, con => 'en',  dis => 'of' },
+	'da' => { sep => ',', alt => ';', pen => 1, con => 'og',  dis => 'eller' },
+	'de' => { sep => ',', alt => ';', pen => 1, con => 'und', dis => 'oder' },
+	'en' => { sep => ',', alt => ';', pen => 1, con => 'and', dis => 'or' },
+	'es' => { sep => ',', alt => ';', pen => 1, con => 'y',   dis => 'o' },
+	'fi' => { sep => ',', alt => ';', pen => 1, con => 'ja',  dis => 'tai' },
+	'fr' => { sep => ',', alt => ';', pen => 0, con => 'et',  dis => 'ou' },
+	'id' => { sep => ',', alt => ';', pen => 1, con => 'dan', dis => 'atau' },
+	'it' => { sep => ',', alt => ';', pen => 1, con => 'e',   dis => 'o' },
+	'la' => { sep => ',', alt => ';', pen => 1, con => 'et',  dis => 'vel' },
+	'nl' => { sep => ',', alt => ';', pen => 1, con => 'en',  dis => 'of' },
+	'no' => { sep => ',', alt => ';', pen => 0, con => 'og',  dis => 'eller' },
+	'pt' => { sep => ',', alt => ';', pen => 1, con => 'e',   dis => 'ou' },
+	'sw' => { sep => ',', alt => ';', pen => 1, con => 'na',  dis => 'au' },
 );
 
 # Conjunction types. TODO: Someday we'll add either..or, neither..nor
