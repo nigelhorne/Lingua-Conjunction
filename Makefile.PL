@@ -38,9 +38,10 @@ WriteMakefile(
 				web => 'https://github.com/nigelhorne/Lingua-Conjunction',
 				repository => 'https://github.com/nigelhorne/Lingua-Conjunction',
 			}, bugtracker => {
-				# web => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Lingua-Conjunction',
-				web => 'https://github.com/nigelhorne/Lingua-Conjunction/issues',
-				url => 'https://github.com/nigelhorne/Lingua-Conjunction/issues',
+				# RT#134010
+				web => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Lingua-Conjunction',
+				# web => 'https://github.com/nigelhorne/Lingua-Conjunction/issues',
+				# url => 'https://github.com/nigelhorne/Lingua-Conjunction/issues',
 				mailto => 'bug-Lingua-Conjunction@rt.cpan.org'
 			}
 		},

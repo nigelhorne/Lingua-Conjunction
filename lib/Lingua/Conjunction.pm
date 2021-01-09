@@ -110,24 +110,28 @@ You can also set connectives individually:
 =cut
 
 sub conjunction {
-    return $_[0] if @_ < 2;
-    return join " $punct{$list_type} ", @_ if @_ == 2;
+	my @list = @_;
+ 
+	# See List::ToHumanString
+	@list = grep defined && /\S/, @list;
+ 
+	return if(scalar(@list) == 0);
+	return $list[0] if(scalar(@list) == 1);
+	return join(" $punct{$list_type} ", @list) if(scalar(@list) == 2);
 
-    if ( $punct{pen} ) {
-        return join "$punct{sep} ", @_[ 0 .. $#_ - 1 ],
-          "$punct{$list_type} $_[-1]",
-          unless grep /$punct{sep}/, @_;
-        return join "$punct{alt} ", @_[ 0 .. $#_ - 1 ],
-          "$punct{$list_type} $_[-1]";
-    }
-    else {
-        return join "$punct{sep} ", @_[ 0 .. $#_ - 2 ],
-          "$_[-2] $punct{$list_type} $_[-1]",
-          unless grep /$punct{sep}/, @_;
-        return join "$punct{alt} ", @_[ 0 .. $#_ - 2 ],
-          "$_[-2] $punct{$list_type} $_[-1]";
-    }
-
+	if ( $punct{pen} ) {
+		return join "$punct{sep} ", @list[ 0 .. $#_ - 1 ],
+		  "$punct{$list_type} $_[-1]",
+		  unless grep /$punct{sep}/, @list;
+		return join "$punct{alt} ", @list[ 0 .. $#_ - 1 ],
+		  "$punct{$list_type} $_[-1]";
+	} else {
+		return join "$punct{sep} ", @list[ 0 .. $#_ - 2 ],
+		  "$_[-2] $punct{$list_type} $_[-1]",
+		  unless grep /$punct{sep}/, @list;
+		return join "$punct{alt} ", @list[ 0 .. $#_ - 2 ],
+		  "$_[-2] $punct{$list_type} $_[-1]";
+	}
 }
 
 =head2 separator
@@ -289,7 +293,7 @@ Nigel Horne C<< <njh at bandsman.co.uk> >>
 
 =head1 SEE ALSO
 
-C<Locale::Language>
+C<Locale::Language>, C<List::ToHumanString>
 
 The I<Perl Cookbook> in Section 4.2 has a simular subroutine called
 C<commify_series>. The differences are that
@@ -340,7 +344,7 @@ L<http://deps.cpantesters.org/?module=Lingua::Conjunction>
 =head1 BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-L<https://github.com/nigelhorne/Lingua-Conjunction/issues>
+L<https://rt.cpan.org/Dist/Display.html?Queue=Lingua-Conjunction>
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
