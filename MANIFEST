@@ -22,4 +22,5 @@ t/no404s.t
 t/pod-cm.t
 t/pod.t
 t/port.t
+t/spelling.t
 t/vars.t

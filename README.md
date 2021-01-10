@@ -71,9 +71,9 @@ an item of the list. For example:
 
 ## penultimate
 
-Enables/disables punultimate separator.
+Enables/disables penultimate separator.
 
-You may use the `penultimate` routine to diable the separator after the
+You may use the `penultimate` routine to disable the separator after the
 next to last item.
 In English, The Oxford Comma is a highly debated issue.
 
@@ -126,7 +126,7 @@ it tries its best to guess.
 
 `Locale::Language`, `List::ToHumanString`
 
-The _Perl Cookbook_ in Section 4.2 has a simular subroutine called
+The _Perl Cookbook_ in Section 4.2 has a similar subroutine called
 `commify_series`. The differences are that
 1\. this routine handles multiple languages and
 2\. being a module, you do not have to add the subroutine to a script every time you need it.

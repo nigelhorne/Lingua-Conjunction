@@ -164,9 +164,9 @@ sub separator_phrase {
 
 =head2 penultimate
 
-Enables/disables punultimate separator.
+Enables/disables penultimate separator.
 
-You may use the C<penultimate> routine to diable the separator after the
+You may use the C<penultimate> routine to disable the separator after the
 next to last item.
 In English, The Oxford Comma is a highly debated issue.
 
@@ -293,7 +293,7 @@ Nigel Horne C<< <njh at bandsman.co.uk> >>
 
 C<Locale::Language>, C<List::ToHumanString>
 
-The I<Perl Cookbook> in Section 4.2 has a simular subroutine called
+The I<Perl Cookbook> in Section 4.2 has a similar subroutine called
 C<commify_series>. The differences are that
 1. this routine handles multiple languages and
 2. being a module, you do not have to add the subroutine to a script every time you need it.
