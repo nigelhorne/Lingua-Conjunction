@@ -4,13 +4,14 @@ Lingua::Conjunction - Convert lists into simple linguistic conjunctions
 
 # VERSION
 
-Version v2.1.5
+Version 2.3
 
 # SYNOPSIS
 
-Language-specific definitions (these may not be correct, and certainly
-they are not complete... E-mail corrections and additions to the author
-and an updated version will be released.)
+Language-specific definitions.
+These may not be correct, and certainly they are not complete.
+E-mail corrections and additions to `<njh at bandsman.co.uk>`,
+and an updated version will be released.
 
 # SUBROUTINES/METHODS
 
@@ -123,7 +124,7 @@ it tries its best to guess.
 
 # SEE ALSO
 
-`Locale::Language`
+`Locale::Language`, `List::ToHumanString`
 
 The _Perl Cookbook_ in Section 4.2 has a simular subroutine called
 `commify_series`. The differences are that
@@ -170,7 +171,7 @@ You can also look for information at:
 # BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-[https://github.com/nigelhorne/Lingua-Conjunction/issues](https://github.com/nigelhorne/Lingua-Conjunction/issues)
+[https://rt.cpan.org/Dist/Display.html?Queue=Lingua-Conjunction](https://rt.cpan.org/Dist/Display.html?Queue=Lingua-Conjunction)
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired

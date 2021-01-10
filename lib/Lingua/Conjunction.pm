@@ -19,11 +19,11 @@ Lingua::Conjunction - Convert lists into simple linguistic conjunctions
 
 =head1 VERSION
 
-Version 2.2
+Version 2.3
 
 =cut
 
-our $VERSION = '2.2';
+our $VERSION = '2.3';
 
 =head1 SYNOPSIS
 
@@ -110,11 +110,9 @@ You can also set connectives individually:
 =cut
 
 sub conjunction {
-	my @list = @_;
- 
 	# See List::ToHumanString
-	@list = grep defined && /\S/, @list;
- 
+	my @list = grep defined && /\S/, @_;
+
 	return if(scalar(@list) == 0);
 	return $list[0] if(scalar(@list) == 1);
 	return join(" $punct{$list_type} ", @list) if(scalar(@list) == 2);
