@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::Most tests => 9;
+use Test::Most tests => 11;
 
 delete $ENV{'LC_ALL'};
 $ENV{'LANGUAGE'} = 'en';
@@ -12,7 +12,9 @@ use_ok('Lingua::Conjunction');
 ok( 'A' eq conjunction( qw( A ) ) );
 ok( 'A and C' eq conjunction( qw( A C ) ) );
 is(conjunction('A', ' ', 'C'), 'A and C', 'Spaces not included in the list');
-ok( 'A, B, and C' eq conjunction( qw( A B C ) ) );
+is(conjunction('A', ' ', 'C', ' '), 'A and C', 'Spaces not included in the list');
+is(conjunction(' ', 'A', ' ', 'C', ' '), 'A and C', 'Spaces not included in the list');
+ok('A, B, and C' eq conjunction( qw( A B C ) ));
 
 Lingua::Conjunction->connector_type('or');
 

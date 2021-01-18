@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::Conjunction.
 
+2.4
+	Fix handling of last element in input array is undef
+
 2.3	Sat Jan  9 20:05:59 EST 2021
 	Fix RT#134010
 	Fix RT#134011

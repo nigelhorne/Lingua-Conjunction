@@ -118,17 +118,17 @@ sub conjunction {
 	return join(" $punct{$list_type} ", @list) if(scalar(@list) == 2);
 
 	if ( $punct{pen} ) {
-		return join "$punct{sep} ", @list[ 0 .. $#_ - 1 ],
-		  "$punct{$list_type} $_[-1]",
+		return join "$punct{sep} ", @list[ 0 .. $#list - 1 ],
+		  "$punct{$list_type} $list[-1]",
 		  unless grep /$punct{sep}/, @list;
-		return join "$punct{alt} ", @list[ 0 .. $#_ - 1 ],
-		  "$punct{$list_type} $_[-1]";
+		return join "$punct{alt} ", @list[ 0 .. $#list - 1 ],
+		  "$punct{$list_type} $list[-1]";
 	} else {
-		return join "$punct{sep} ", @list[ 0 .. $#_ - 2 ],
-		  "$_[-2] $punct{$list_type} $_[-1]",
+		return join "$punct{sep} ", @list[ 0 .. $#list - 2 ],
+		  "$list[-2] $punct{$list_type} $list[-1]",
 		  unless grep /$punct{sep}/, @list;
-		return join "$punct{alt} ", @list[ 0 .. $#_ - 2 ],
-		  "$_[-2] $punct{$list_type} $_[-1]";
+		return join "$punct{alt} ", @list[ 0 .. $#list - 2 ],
+		  "$list[-2] $punct{$list_type} $list[-1]";
 	}
 }
 
@@ -141,7 +141,7 @@ Sets the separator, usually ',' or ';'.
 =cut
 
 sub separator {
-    $punct{sep} = $_[1];
+	$punct{sep} = $_[1];
 }
 
 =head2 separator_phrase
