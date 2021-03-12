@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::Most tests => 12;
+use Test::Most tests => 13;
 
 delete $ENV{'LC_ALL'};
 $ENV{'LANGUAGE'} = 'en';
@@ -14,6 +14,7 @@ ok( 'A and C' eq conjunction( qw( A C ) ) );
 is(conjunction('A', ' ', 'C'), 'A and C', 'Spaces not included in the list');
 is(conjunction('A', ' ', 'C', ' '), 'A and C', 'Spaces not included in the list');
 is(conjunction(' ', 'A', ' ', 'C', ' '), 'A and C', 'Spaces not included in the list');
+is(conjunction(' ', 'A', undef, 'C', ' '), 'A and C', 'undef handled correctly');
 ok('A, B, and C' eq conjunction( qw( A B C ) ));
 
 Lingua::Conjunction->connector_type('or');
@@ -27,4 +28,3 @@ is('A; B, C; or D', conjunction('A', 'B, C', 'D'), 'Alternative separator');
 Lingua::Conjunction->penultimate();
 
 is('A, B or C', conjunction(qw( A B C )), 'Remove the Oxford comma');
-
