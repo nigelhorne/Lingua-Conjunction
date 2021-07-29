@@ -138,10 +138,15 @@ Sets the separator, usually ',' or ';'.
 
     Lingua::Conjunction->separator(',');
 
+Returns the previous value.
+
 =cut
 
 sub separator {
+	my $rc = $punct{'sep'};
+
 	$punct{sep} = $_[1];
+	return $rc;
 }
 
 =head2 separator_phrase
@@ -156,10 +161,15 @@ an item of the list. For example:
     # emits "Doe, a deer; Ray; and Me"
     $name_list = conjunction('Doe, a deer', 'Ray', 'Me');
 
+Returns the previous value;
+
 =cut
 
 sub separator_phrase {
-    $punct{alt} = $_[1];
+	my $rc = $punct{'alt'};
+
+	$punct{alt} = $_[1];
+	return $rc;
 }
 
 =head2 penultimate
@@ -180,10 +190,15 @@ Hence the defaults set in the C<%languages>.
 
     Lingua::Conjunction->penultimate(0);
 
+Returns the previous value.
+
 =cut
 
 sub penultimate {
-    $punct{pen} = $_[1];
+	my $rc = $punct{'pen'};
+
+	$punct{pen} = $_[1];
+	return $rc;
 }
 
 =head2 connector_type
@@ -205,10 +220,15 @@ Sets the for the current connector_type.
 
     Lingua::Conjunction->connector(SCALAR)
 
+Returns the previous value.
+
 =cut
 
 sub connector {
-    $punct{$list_type} = $_[1];
+	my $rc = $punct{'list_type'};
+
+	$punct{$list_type} = $_[1];
+	return $rc;
 }
 
 =head2 lang

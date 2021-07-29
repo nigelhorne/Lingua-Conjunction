@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::Conjunction.
 
+2.5
+	Return the previous value when setting a charateristic
+
 2.4	Sun Jan 17 21:27:37 EST 2021
 	Fix handling of last element in input array is undef
 
