@@ -8,6 +8,7 @@ MANIFEST.SKIP
 README.md
 t/00-load.t
 t/basic.t
+t/comment-spelling.t
 t/coverage.t
 t/critic.t
 t/eof.t
@@ -20,8 +21,8 @@ t/manifest.t
 t/minimum.t
 t/no404s.t
 t/pod-cm.t
+t/pod-spelling.t
 t/pod.t
 t/port.t
-t/spelling.t
 t/strict.t
 t/vars.t

@@ -39,7 +39,7 @@ and an updated version will be released.
 # sep = item  separator (usually a comma)
 # alt = alternate ("phrase") separator
 # pen = 1 = use penultimate separator/0 = don't use penultimate
-#	(ie, "Jack, Jill and Spot" vs. "Jack, Jill, and Spot")
+#	(i.e., "Jack, Jill and Spot" vs. "Jack, Jill, and Spot")
 # con = conjunction ("and")
 # dis = disjunction ("or"), well, grammatically still a "conjunction"...
 
