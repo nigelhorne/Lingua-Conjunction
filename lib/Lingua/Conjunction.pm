@@ -2,7 +2,7 @@ package Lingua::Conjunction;
 
 # ABSTRACT: Convert lists into simple linguistic conjunctions
 
-use v5.8;
+use 5.008;
 
 use strict;
 use warnings;
@@ -19,11 +19,11 @@ Lingua::Conjunction - Convert lists into simple linguistic conjunctions
 
 =head1 VERSION
 
-Version 2.4
+Version 2.5
 
 =cut
 
-our $VERSION = '2.4';
+our $VERSION = '2.5';
 
 =head1 SYNOPSIS
 
@@ -210,8 +210,13 @@ Use "and" or "or", with appropriate translation for the current language
 =cut
 
 sub connector_type {
-    croak "Undefined connector type \`$_[1]\'", unless ( $types{ $_[1] } );
-    $list_type = $types{ $_[1] };
+	if($types{ $_[1]}) {
+		$list_type = $types{ $_[1] };
+	} else {
+		croak "Undefined connector type \`$_[1]\'"
+	}
+
+	return $list_type;
 }
 
 =head2 connector
@@ -242,10 +247,15 @@ it tries its best to guess.
 =cut
 
 sub lang {
-    my $language = $_[1] || _get_language();
-    croak "Undefined language \`$language\'",
-      unless ( defined( $language{$language} ) );
-    %punct = %{ $language{$language} };
+	my $language = $_[1] || _get_language();
+
+	if(defined($language{$language})) {
+		%punct = %{ $language{$language} };
+	} else {
+		croak "Undefined language \`$language\'";
+	}
+
+	return $language;
 }
 
 # https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html
@@ -359,7 +369,7 @@ L<http://deps.cpantesters.org/?module=Lingua::Conjunction>
 
 =back
 
-=head1 BUGS
+=head1 BUGS AND LIMITATIONS
 
 Please report any bugs or feature requests on the bugtracker website
 L<https://rt.cpan.org/Dist/Display.html?Queue=Lingua-Conjunction>
@@ -368,7 +378,7 @@ When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
 feature.
 
-=head1 COPYRIGHT AND LICENSE
+=head1 LICENSE AND COPYRIGHT
 
 This software is Copyright (c) 1999-2020 by Robert Rothenberg.
 

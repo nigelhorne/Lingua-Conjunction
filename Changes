@@ -1,6 +1,6 @@
 Revision history for Perl extension Lingua::Conjunction.
 
-2.5
+2.5	Mon Aug  2 17:28:13 EDT 2021
 	Return the previous value when setting a charateristic
 
 2.4	Sun Jan 17 21:27:37 EST 2021
