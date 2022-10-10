@@ -45,6 +45,7 @@ and an updated version will be released.
 
 my %language = (
 	'af' => { sep => ',', alt => ';', pen => 1, con => 'en',  dis => 'of' },
+	'br' => { sep => ',', alt => ';', pen => 0, con => 'ha',  dis => 'ou' },	# Breton - 'and' is 'ha'
 	'da' => { sep => ',', alt => ';', pen => 1, con => 'og',  dis => 'eller' },
 	'de' => { sep => ',', alt => ';', pen => 1, con => 'und', dis => 'oder' },
 	'en' => { sep => ',', alt => ';', pen => 1, con => 'and', dis => 'or' },
