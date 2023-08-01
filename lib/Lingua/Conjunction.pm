@@ -80,8 +80,10 @@ converts a list into a properly punctuated text string.
 You can cause C<conjunction> to use the connectives of other languages, by
 calling the appropriate subroutine:
 
-    Lingua::Conjunction->lang('en');   # use 'and'
-    Lingua::Conjunction->lang('es');   # use 'y'
+    use Lingua::Conjunction;
+
+    Lingua::Conjunction->lang('en');	# use 'and'
+    Lingua::Conjunction->lang('es');	# use 'y'
     Lingua::Conjunction->lang();	# Tries to determine your language, otherwise falls back to 'en'
 
 Supported languages in this version are
@@ -298,7 +300,7 @@ Damian Conway <damian@conway.org>
 
 =head1 MAINTAINER
 
-    2021-present	Maintained by Nigel Horne, C<< <njh at bandsman.co.uk> >>
+2021-present	Maintained by Nigel Horne, C<< <njh at bandsman.co.uk> >>
 
 =head1 CONTRIBUTORS
 
@@ -385,7 +387,7 @@ This software is Copyright (c) 1999-2020 by Robert Rothenberg.
 
 This is free software, licensed under:
 
-  The Artistic License 2.0 (GPL Compatible)
+The Artistic License 2.0 (GPL Compatible)
 
 =cut
 
