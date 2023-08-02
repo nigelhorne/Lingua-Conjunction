@@ -4,7 +4,7 @@ Lingua::Conjunction - Convert lists into simple linguistic conjunctions
 
 # VERSION
 
-Version 2.4
+Version 2.5
 
 # SYNOPSIS
 
@@ -23,8 +23,10 @@ converts a list into a properly punctuated text string.
 You can cause `conjunction` to use the connectives of other languages, by
 calling the appropriate subroutine:
 
-    Lingua::Conjunction->lang('en');   # use 'and'
-    Lingua::Conjunction->lang('es');   # use 'y'
+    use Lingua::Conjunction;
+
+    Lingua::Conjunction->lang('en');    # use 'and'
+    Lingua::Conjunction->lang('es');    # use 'y'
     Lingua::Conjunction->lang();        # Tries to determine your language, otherwise falls back to 'en'
 
 Supported languages in this version are
@@ -57,6 +59,8 @@ Sets the separator, usually ',' or ';'.
 
     Lingua::Conjunction->separator(',');
 
+Returns the previous value.
+
 ## separator\_phrase
 
 Sets the alternate (phrase) separator.
@@ -68,6 +72,8 @@ an item of the list. For example:
 
     # emits "Doe, a deer; Ray; and Me"
     $name_list = conjunction('Doe, a deer', 'Ray', 'Me');
+
+Returns the previous value;
 
 ## penultimate
 
@@ -87,6 +93,8 @@ Hence the defaults set in the `%languages`.
 
     Lingua::Conjunction->penultimate(0);
 
+Returns the previous value.
+
 ## connector\_type
 
 Use "and" or "or", with appropriate translation for the current language
@@ -98,6 +106,8 @@ Use "and" or "or", with appropriate translation for the current language
 Sets the for the current connector\_type.
 
     Lingua::Conjunction->connector(SCALAR)
+
+Returns the previous value.
 
 ## lang
 
@@ -114,7 +124,7 @@ it tries its best to guess.
 
 # MAINTAINER
 
-    2021-present        Maintained by Nigel Horne, C<< <njh at bandsman.co.uk> >>
+2021-present	Maintained by Nigel Horne, `<njh at bandsman.co.uk>`
 
 # CONTRIBUTORS
 
@@ -168,7 +178,7 @@ You can also look for information at:
 
     [http://deps.cpantesters.org/?module=Lingua::Conjunction](http://deps.cpantesters.org/?module=Lingua::Conjunction)
 
-# BUGS
+# BUGS AND LIMITATIONS
 
 Please report any bugs or feature requests on the bugtracker website
 [https://rt.cpan.org/Dist/Display.html?Queue=Lingua-Conjunction](https://rt.cpan.org/Dist/Display.html?Queue=Lingua-Conjunction)
@@ -177,10 +187,10 @@ When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
 feature.
 
-# COPYRIGHT AND LICENSE
+# LICENSE AND COPYRIGHT
 
 This software is Copyright (c) 1999-2020 by Robert Rothenberg.
 
 This is free software, licensed under:
 
-    The Artistic License 2.0 (GPL Compatible)
+The Artistic License 2.0 (GPL Compatible)
