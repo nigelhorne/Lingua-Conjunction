@@ -113,14 +113,14 @@ You can also set connectives individually:
 =cut
 
 sub conjunction {
-	# See List::ToHumanString
+	# TODO: see List::ToHumanString
 	my @list = grep defined && /\S/, @_;
 
 	return if(scalar(@list) == 0);
 	return $list[0] if(scalar(@list) == 1);
 	return join(" $punct{$list_type} ", @list) if(scalar(@list) == 2);
 
-	if ( $punct{pen} ) {
+	if($punct{pen}) {
 		return join "$punct{sep} ", @list[ 0 .. $#list - 1 ],
 		  "$punct{$list_type} $list[-1]",
 		  unless grep /$punct{sep}/, @list;
@@ -361,10 +361,6 @@ L<http://cpants.cpanauthors.org/dist/Lingua-Conjunction>
 =item * CPAN Testers' Matrix
 
 L<http://matrix.cpantesters.org/?dist=Lingua-Conjunction>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Lingua-Conjunction>
 
 =item * CPAN Testers Dependencies
 
