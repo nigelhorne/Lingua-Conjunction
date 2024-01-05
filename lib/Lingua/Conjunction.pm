@@ -354,10 +354,6 @@ L<https://metacpan.org/release/Lingua-Conjunction>
 
 L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Lingua-Conjunction>
 
-=item * CPANTS
-
-L<http://cpants.cpanauthors.org/dist/Lingua-Conjunction>
-
 =item * CPAN Testers' Matrix
 
 L<http://matrix.cpantesters.org/?dist=Lingua-Conjunction>
@@ -384,6 +380,8 @@ This software is Copyright (c) 1999-2020 by Robert Rothenberg.
 This is free software, licensed under:
 
 The Artistic License 2.0 (GPL Compatible)
+
+The current maintener is Nigel Horne.
 
 =cut
 
