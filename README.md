@@ -4,7 +4,7 @@ Lingua::Conjunction - Convert lists into simple linguistic conjunctions
 
 # VERSION
 
-Version 2.5
+Version 2.6
 
 # SYNOPSIS
 

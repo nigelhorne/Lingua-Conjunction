@@ -19,11 +19,11 @@ Lingua::Conjunction - Convert lists into simple linguistic conjunctions
 
 =head1 VERSION
 
-Version 2.5
+Version 2.6
 
 =cut
 
-our $VERSION = '2.5';
+our $VERSION = '2.6';
 
 =head1 SYNOPSIS
 

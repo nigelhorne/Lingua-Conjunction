@@ -28,3 +28,4 @@ t/pod.t
 t/port.t
 t/strict.t
 t/vars.t
+t/version.t
