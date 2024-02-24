@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::Most tests => 13;
+use Test::Most tests => 14;
 
 delete $ENV{'LC_ALL'};
 $ENV{'LANGUAGE'} = 'en';
@@ -25,6 +25,10 @@ ok( 'A, B, or C' eq conjunction( qw( A B C ) ) );
 
 is('A; B, C; or D', conjunction('A', 'B, C', 'D'), 'Alternative separator');
 
-Lingua::Conjunction->penultimate();
+Lingua::Conjunction->penultimate(0);
 
 is('A, B or C', conjunction(qw( A B C )), 'Remove the Oxford comma');
+
+Lingua::Conjunction->connector_type('and');
+Lingua::Conjunction->penultimate(1);
+is(conjunction('A, B', 'C'), 'A, B; and C');

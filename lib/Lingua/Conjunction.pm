@@ -118,7 +118,7 @@ sub conjunction {
 
 	return if(scalar(@list) == 0);
 	return $list[0] if(scalar(@list) == 1);
-	return join(" $punct{$list_type} ", @list) if(scalar(@list) == 2);
+	return join(" $punct{$list_type} ", @list) if((scalar(@list) == 2) && !(grep /$punct{sep}/, @list));
 
 	if($punct{pen}) {
 		return join "$punct{sep} ", @list[ 0 .. $#list - 1 ],
