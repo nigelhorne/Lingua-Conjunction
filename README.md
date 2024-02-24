@@ -162,17 +162,9 @@ You can also look for information at:
 
     [https://rt.cpan.org/NoAuth/Bugs.html?Dist=Lingua-Conjunction](https://rt.cpan.org/NoAuth/Bugs.html?Dist=Lingua-Conjunction)
 
-- CPANTS
-
-    [http://cpants.cpanauthors.org/dist/Lingua-Conjunction](http://cpants.cpanauthors.org/dist/Lingua-Conjunction)
-
 - CPAN Testers' Matrix
 
     [http://matrix.cpantesters.org/?dist=Lingua-Conjunction](http://matrix.cpantesters.org/?dist=Lingua-Conjunction)
-
-- CPAN Ratings
-
-    [http://cpanratings.perl.org/d/Lingua-Conjunction](http://cpanratings.perl.org/d/Lingua-Conjunction)
 
 - CPAN Testers Dependencies
 
@@ -194,3 +186,5 @@ This software is Copyright (c) 1999-2020 by Robert Rothenberg.
 This is free software, licensed under:
 
 The Artistic License 2.0 (GPL Compatible)
+
+The current maintainer is Nigel Horne.

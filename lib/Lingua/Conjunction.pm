@@ -381,7 +381,7 @@ This is free software, licensed under:
 
 The Artistic License 2.0 (GPL Compatible)
 
-The current maintener is Nigel Horne.
+The current maintainer is Nigel Horne.
 
 =cut
 
