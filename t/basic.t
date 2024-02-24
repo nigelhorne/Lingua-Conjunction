@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::Most tests => 14;
+use Test::Most tests => 15;
 
 delete $ENV{'LC_ALL'};
 $ENV{'LANGUAGE'} = 'en';
@@ -32,3 +32,5 @@ is('A, B or C', conjunction(qw( A B C )), 'Remove the Oxford comma');
 Lingua::Conjunction->connector_type('and');
 Lingua::Conjunction->penultimate(1);
 is(conjunction('A, B', 'C'), 'A, B; and C');
+
+is(conjunction(), undef, 'empty string returns undef');
