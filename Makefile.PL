@@ -20,7 +20,8 @@ WriteMakefile(
 		'Module::Metadata' => 0,
 		'Test::More' => 0,
 		'Test::Most' => 0,
-		'Test::Needs' => 0
+		'Test::Needs' => 0,
+		'Test::NoWarnings' => 0
 	}, PREREQ_PM => {
 		'Carp' => 0,
 		'Exporter' => 0,

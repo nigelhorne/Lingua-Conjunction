@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::Conjunction.
 
+2.7
+	Added t/and.t
+
 2.6	Sat Feb 24 10:06:42 EST 2024
 	When joining a list of two, handle the separator phrase
 
