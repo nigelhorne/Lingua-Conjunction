@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::Most tests => 5;
+use Test::Most tests => 7;
 use Test::NoWarnings;
 
 BEGIN {
@@ -13,6 +13,10 @@ BEGIN {
 use_ok('Lingua::Conjunction');
 
 cmp_ok(conjunction('A', 'B'), 'eq', 'A and B');
+
+cmp_ok(conjunction('A', ' '), 'eq', 'A', 'blank strings ignored');
+
+cmp_ok(conjunction('', 'B'), 'eq', 'B', 'empty strings ignored');
 
 Lingua::Conjunction->lang('de');	# Changes the language to German
 
