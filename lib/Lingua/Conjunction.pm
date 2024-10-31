@@ -265,20 +265,16 @@ sub lang {
 # https://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html
 sub _get_language
 {
-	if($ENV{'LANGUAGE'}) {
-		foreach my $l(split/:/, $ENV{'LANGUAGE'}) {
-			if($language{$l}) {
-				return $l;
-			}
-		}
+	if($ENV{'LANGUAGE'} && ($ENV{'LANGUAGE'} =~ /^([a-z]{2})/i)) {
+		return lc($1);
 	}
+
 	foreach my $variable('LC_ALL', 'LC_MESSAGES', 'LANG') {
 		my $val = $ENV{$variable};
 		next unless(defined($val));
 
-		$val = substr($val, 0, 2);
-		if($language{$val}) {
-			return $val;
+		if($val =~ /^([a-z]{2})/i) {
+			return lc($1);
 		}
 	}
 	return 'en';
