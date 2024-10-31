@@ -10,7 +10,6 @@ t/00-load.t
 t/and.t
 t/basic.t
 t/comment-spelling.t
-t/coverage.t
 t/critic.t
 t/eof.t
 t/eol.t
@@ -22,6 +21,7 @@ t/manifest.t
 t/minimum.t
 t/no404s.t
 t/pod-cm.t
+t/pod-coverage.t
 t/pod-snippets.t
 t/pod-spelling.t
 t/pod-synopsis.t
