@@ -114,25 +114,21 @@ You can also set connectives individually:
 
 sub conjunction {
 	# TODO: see List::ToHumanString
-	my @list = grep defined && /\S/, @_;
+	my @list = grep { defined && /\S/ } @_;
+	my $list_count = scalar @list;
 
-	return if(scalar(@list) == 0);
-	return $list[0] if(scalar(@list) == 1);
-	return join(" $punct{$list_type} ", @list) if((scalar(@list) == 2) && !(grep /$punct{sep}/, @list));
+	return if $list_count == 0;
+	return $list[0] if $list_count == 1;
 
-	if($punct{pen}) {
-		return join "$punct{sep} ", @list[ 0 .. $#list - 1 ],
-		  "$punct{$list_type} $list[-1]",
-		  unless grep /$punct{sep}/, @list;
-		return join "$punct{alt} ", @list[ 0 .. $#list - 1 ],
-		  "$punct{$list_type} $list[-1]";
-	} else {
-		return join "$punct{sep} ", @list[ 0 .. $#list - 2 ],
-		  "$list[-2] $punct{$list_type} $list[-1]",
-		  unless grep /$punct{sep}/, @list;
-		return join "$punct{alt} ", @list[ 0 .. $#list - 2 ],
-		  "$list[-2] $punct{$list_type} $list[-1]";
+	# Use appropriate separator for 2-item lists without punctuation conflicts
+	return join(" $punct{$list_type} ", @list) if $list_count == 2 && !grep { /$punct{sep}/ } @list;
+
+	my $separator = (grep { /$punct{sep}/ } @list) ? $punct{alt} : $punct{sep};
+
+	if($punct{pen}) {	# Use Oxford comma?
+		return join("$separator ", @list[0 .. $#list - 1], "$punct{$list_type} $list[-1]");
 	}
+	return join("$separator ", @list[0 .. $#list - 2], "$list[-2] $punct{$list_type} $list[-1]");
 }
 
 =head2 separator
