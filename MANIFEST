@@ -7,6 +7,7 @@ MANIFEST
 MANIFEST.SKIP
 README.md
 t/00-load.t
+t/30-basics.t
 t/and.t
 t/basic.t
 t/comment-spelling.t

@@ -4,6 +4,7 @@ Revision history for Perl extension Lingua::Conjunction.
 	Added t/and.t
 	Use gtar to create a distribution on Macs
 	Use Test::DescribeMe to simplify tests
+	Ensure seperators using regex characters don't force alt
 
 2.6	Sat Feb 24 10:06:42 EST 2024
 	When joining a list of two, handle the separator phrase

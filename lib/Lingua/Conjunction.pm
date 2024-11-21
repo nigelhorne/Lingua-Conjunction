@@ -36,7 +36,7 @@ and an updated version will be released.
 
 # Format of %language is as follows:
 # Two-letter ISO language codes... see L<Locale::Language> from CPAN for more details.
-# sep = item  separator (usually a comma)
+# sep = item separator (usually a comma)
 # alt = alternate ("phrase") separator
 # pen = 1 = use penultimate separator/0 = don't use penultimate
 #	(i.e., "Jack, Jill and Spot" vs. "Jack, Jill, and Spot")
@@ -123,7 +123,8 @@ sub conjunction {
 	# Use appropriate separator for 2-item lists without punctuation conflicts
 	return join(" $punct{$list_type} ", @list) if $list_count == 2 && !grep { /$punct{sep}/ } @list;
 
-	my $separator = (grep { /$punct{sep}/ } @list) ? $punct{alt} : $punct{sep};
+	# Quote with \Q incase the seperator has regex characters e.g. '.'
+	my $separator = (grep { /\Q$punct{sep}\E/ } @list) ? $punct{alt} : $punct{sep};
 
 	if($punct{pen}) {	# Use Oxford comma?
 		return join("$separator ", @list[0 .. $#list - 1], "$punct{$list_type} $list[-1]");
@@ -144,7 +145,7 @@ Returns the previous value.
 sub separator {
 	my $rc = $punct{'sep'};
 
-	$punct{sep} = $_[1];
+	$punct{'sep'} = $_[1];
 	return $rc;
 }
 
