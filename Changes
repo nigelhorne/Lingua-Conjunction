@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::Conjunction.
 
+2.8
+	Document the side-effects of calling lang()
+
 2.7	Thu Nov 21 07:36:52 EST 2024
 	Added t/and.t
 	Use gtar to create a distribution on Macs

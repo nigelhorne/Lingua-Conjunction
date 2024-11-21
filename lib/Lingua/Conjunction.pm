@@ -244,6 +244,8 @@ it tries its best to guess.
 
     Lingua::Conjunction->lang('de');	# Changes the language to German
 
+Note that this loses any changes such those by calls to separator.
+
 =cut
 
 sub lang {
@@ -252,7 +254,7 @@ sub lang {
 	if(defined($language{$language})) {
 		%punct = %{ $language{$language} };
 	} else {
-		croak "Undefined language \`$language\'";
+		croak("Undefined language \`$language\'");
 	}
 
 	return $language;
