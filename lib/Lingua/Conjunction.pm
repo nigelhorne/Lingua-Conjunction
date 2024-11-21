@@ -123,7 +123,7 @@ sub conjunction {
 	# Use appropriate separator for 2-item lists without punctuation conflicts
 	return join(" $punct{$list_type} ", @list) if $list_count == 2 && !grep { /$punct{sep}/ } @list;
 
-	# Quote with \Q incase the seperator has regex characters e.g. '.'
+	# Quote with \Q incase the separator has regex characters e.g. '.'
 	my $separator = (grep { /\Q$punct{sep}\E/ } @list) ? $punct{alt} : $punct{sep};
 
 	if($punct{pen}) {	# Use Oxford comma?
