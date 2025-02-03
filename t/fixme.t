@@ -18,10 +18,6 @@ if($@) {
 	diag('Devel::FIXME needed to test for FIXMEs');
 	done_testing(1);
 } else {
-	$ENV{'GATEWAY_INTERFACE'} = 'CGI/1.1';
-	$ENV{'REQUEST_METHOD'} = 'GET';
-	$ENV{'QUERY_STRING'} = 'fred=wilma';
-
 	# $Devel::FIXME::REPAIR_INC = 1;
 
 	use_ok('Lingua::Conjunction');
@@ -35,7 +31,7 @@ if($@) {
 sub Devel::FIXME::rules {
 	sub {
 		my $self = shift;
-		return shout($self) if $self->{file} =~ /lib\/CGI\/Info/;
+		return shout($self) if $self->{file} =~ /lib\/Lingua\/Conjuncion/;
 		return Devel::FIXME::DROP();
 	}
 }
