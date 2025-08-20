@@ -7,7 +7,7 @@ Revision history for Perl extension Lingua::Conjunction.
 	Added t/and.t
 	Use gtar to create a distribution on Macs
 	Use Test::DescribeMe to simplify tests
-	Ensure seperators using regex characters don't force alt
+	Ensure separators using regex characters don't force alt
 
 2.6	Sat Feb 24 10:06:42 EST 2024
 	When joining a list of two, handle the separator phrase
@@ -21,7 +21,7 @@ Revision history for Perl extension Lingua::Conjunction.
 2.3	Sat Jan  9 20:05:59 EST 2021
 	Fix RT#134010
 	Fix RT#134011
-	Included idea from List::ToHumanString to not incude space and undef in inputs
+	Included idea from List::ToHumanString to not include space and undef in inputs
 
 v2.2	Wed Jan  6 09:42:17 EST 2021
 	New Maintainer, thanks to RRWO and DAMIAN for the software
