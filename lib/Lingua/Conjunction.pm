@@ -270,7 +270,7 @@ sub _get_language
 			return lc($1);
 		}
 	}
-	if($ENV{'LANGUAGE'} && ($ENV{'LANGUAGE'} =~ /^([a-z]{2})/i)) {
+	if(($ENV{'LANGUAGE'}) && ($ENV{'LANGUAGE'} =~ /^([a-z]{2})/i)) {
 		return lc($1);
 	}
 
