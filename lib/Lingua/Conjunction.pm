@@ -254,7 +254,7 @@ sub lang {
 	if(defined($language{$language})) {
 		%punct = %{ $language{$language} };
 	} else {
-		croak("Undefined language \`$language\'");
+		croak("Undefined language '$language'");
 	}
 
 	return $language;
