@@ -9,6 +9,7 @@ use warnings;
 
 use Carp qw/ croak /;
 use Exporter qw/ import /;
+use I18N::LangTags::Detect;
 
 our @EXPORT    = qw( conjunction );
 our @EXPORT_OK = @EXPORT;
@@ -264,6 +265,11 @@ sub lang {
 # https://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html
 sub _get_language
 {
+	for my $tag (I18N::LangTags::Detect::detect()) {
+		if ($tag =~ /^([a-z]{2})/i) {
+			return lc($1);
+		}
+	}
 	if($ENV{'LANGUAGE'} && ($ENV{'LANGUAGE'} =~ /^([a-z]{2})/i)) {
 		return lc($1);
 	}

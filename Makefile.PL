@@ -35,6 +35,7 @@ WriteMakefile(
 	}, PREREQ_PM => {
 		'Carp' => 0,
 		'Exporter' => 0,
+		'I18N::LangTags::Detect',
 	}, dist => $dist,
 	clean		=> { FILES => 'Lingua-Conjunction-*' },
 	# META_ADD => {

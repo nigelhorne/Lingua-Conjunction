@@ -2,6 +2,7 @@ Revision history for Perl extension Lingua::Conjunction.
 
 2.8
 	Document the side-effects of calling lang()
+	Use I18N::LangTags::Detect
 
 2.7	Thu Nov 21 07:36:52 EST 2024
 	Added t/and.t
