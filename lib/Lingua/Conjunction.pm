@@ -261,6 +261,10 @@ sub lang {
 	return $language;
 }
 
+# Determines the system's default language using environment variables:
+# 'LANGUAGE', 'LC_ALL', 'LC_MESSAGES', $ENV{'LANG'}.
+# Defaults to English ('en') if no valid language is found.
+
 # https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html
 # https://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html
 sub _get_language
