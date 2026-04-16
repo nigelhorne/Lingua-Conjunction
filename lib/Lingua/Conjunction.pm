@@ -211,6 +211,9 @@ Use "and" or "or", with appropriate translation for the current language
 =cut
 
 sub connector_type {
+	if(!defined($_[1])) {
+		croak 'Usage: connector_type(and|or)';
+	}
 	if($types{ $_[1]}) {
 		$list_type = $types{ $_[1] };
 	} else {
